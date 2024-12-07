@@ -1,7 +1,7 @@
 #ifndef CUSTOM_TIMER_H
 #define CUSTOM_TIMER_H
 //customTimer.h - funny timer library v3
-//do you think this might actually make main look good?
+//do you think this might actually make main look good? no
 volatile unsigned char *newTCCR1A = (unsigned char *) 0x80;
 volatile unsigned char *newTCCR1B = (unsigned char *) 0x81;
 volatile unsigned char *newTCCR1C = (unsigned char *) 0x82;
@@ -17,7 +17,7 @@ void initTimer(){
   *newTIFR1 = 0x01;
 }
 
-void delayFreq(int freq){
+void delayFreq(double freq){
   //1000hz = 1ms
   double period = 1.0/double(freq);
   double half_period = period/ 2.0f;
