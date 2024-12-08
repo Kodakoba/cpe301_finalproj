@@ -35,15 +35,15 @@ volatile unsigned char* pin_base = (unsigned char*) 0x1D;
 
 // Conversion funcs to turn a Register into a proper int
 unsigned char *ddrb(Register reg) {
-  return *(ddr_base + 0x3 * static_cast<int>(reg));
+  return *(ddr_base + 0x03 * static_cast<int>(reg));
 }
 
 unsigned char *port(Register reg) {
-  return *(port_base + 0x3 * static_cast<int>(reg));
+  return *(port_base + 0x03 * static_cast<int>(reg));
 }
 
 unsigned char *pinb(Register reg) {
-  return *(pin_base + 0x3 * static_cast<int>(reg));
+  return *(pin_base + 0x03 * static_cast<int>(reg));
 }
 
 //until here

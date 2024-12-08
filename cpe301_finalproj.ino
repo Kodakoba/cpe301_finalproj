@@ -52,7 +52,15 @@ Stepper stepper(2048, STEPPER_P1, STEPPER_P2, STEPPER_P3, STEPPER_P4);
 
 float temp_F;
 int humidity; //don't know if i actually need this bjorgen
+int lastTempPrint = 0;
 
+// state machine flags 
+bool fanOn = false;
+int ledH = -1;
+bool displayTemp = false;
+bool stepperState = false;
+bool Water = false;
+//the state machine
 enum State {
   IDLE,
   OFF,
@@ -63,38 +71,170 @@ enum State {
 //state machine sh!t
 State currentState = OFF;
 State previousState = START;
-
+bool OnState = true;
 //test macro
-#define BLINK {Register::B, 7}
-
+#define BLINK {Register::B, 6}
 
 //now we actually run a setup routine
 void setup(){
+    U0init(9600);
+    //call digitalPinSetup
+    digitalPinSetup(B_ON_OFF, PinMode::PIN_INPUT);
+    digitalPinSetup(B_RESET, PinMode::PIN_INPUT);
+    digitalPinSetup(LIMIT_MAX, PinMode::PIN_INPUT);
+    digitalPinSetup(LIMIT_MIN, PinMode::PIN_INPUT);
+    digitalPinSetup(STEP_UP, PinMode::PIN_INPUT);
+    digitalPinSetup(STEP_DOWN, PinMode::PIN_INPUT);
+    //
+    digitalPinSetup(LED_R, PinMode::PIN_OUTPUT);
+    digitalPinSetup(LED_Y, PinMode::PIN_OUTPUT);
+    digitalPinSetup(LED_G, PinMode::PIN_OUTPUT);
+    digitalPinSetup(LED_B, PinMode::PIN_OUTPUT);
+    //
+    digitalPinSetup(FAN, PinMode::PIN_OUTPUT);
+    //
+    digitalPinSetup(SDA, PinMode::PIN_INPUT);
+    digitalPinSetup(SCL, PinMode::PIN_INPUT);
+    //
+    RTC.begin();
+    DateTime now = DateTime(2024, 12, 12, 0, 0, 0);
+    RTC.adjust(now);
     adc_init();
     initTimer();
-    U0init(9600);
-    //initialize LEDs because they're ezpz
-    digitalPinSetup(LED_R, PinMode::PIN_OUTPUT);
-    //time to initialize the RTC module
-    digitalPinSetup(SDA, PinMode::PIN_INPUT);
-    digitalPinSetup(SCL, PinMode::PIN_INPUT); //in or out? we'll find out!
-    //setup RTC
-    //RTC.begin();
-    DateTime now = DateTime(2024, 12, 12, 0, 0, 0);
-    //RTC.adjust(now); //why can it not use a passed in compile stamp >:/
-
-    //dht11.begin();
-
-    //test code
-    digitalPinSetup(BLINK, PinMode::PIN_OUTPUT);
+    dht.begin(); // check library for this function, its a PITA.
+    lcd.begin(16, 2);
+    //sheesh
+    attachInterrupt(digitalPinToInterrupt(30), powerChange, RISING);
 }
 
 void loop(){
-  /*dht11.update();
-  temp_F = dht11.readFahrenheit(); 
-  humidity = dht11.readHumidity();*/
-  digitalPinWrite(BLINK, true);
-  delay(1000);
-  digitalPinWrite(BLINK, false);
-  delay(1000);
+    DateTime now = RTC.now();
+    if(displayTemp){
+        temp_F = dht.readTemperature();
+        humidity = dht.readHumidity(); //may require casting to an integer. BOO.
+    }
+    if(digitalPinRead(B_ON_OFF)){
+        powerChange();
+    }
+    currentState = newMachineState(humidity,temp_F,currentState);
+    if(currentState != previousState){
+        //print the time
+        //then do state matic stuff.
+        switch (currentState) {
+        case OFF:
+            fanOn = false;
+            ledH = 3;
+            displayTemp = false;
+            stepperState = true;
+            Water = false;
+            break; //always forget you >:/
+        case IDLE:
+            fanOn = false;
+            ledH = 2;
+            displayTemp = true;
+            stepperState = true;
+            Water = true;
+            break;
+        case RUNNING:
+            fanOn = true;
+            ledH = 1;
+            displayTemp = true;
+            stepperState = true;
+            Water = true;
+            break;
+        case ERROR:
+            lcd.clear();
+            lcd.print("ERROR WATER LOW");
+            fanOn = false;
+            ledH = 0;
+            displayTemp = true;
+            stepperState = false;
+            Water = true;
+            break;
+        case START: 
+            //should do start things.
+        default: //needed or else it breaks and im gonna break a computer.
+            break;
+    }
+    setFan(fanOn);
+    //turn leds on here too using *ddrA.
+    if(stepperState){
+        //determine direction the user wants, the limits it can go, then set that speed
+        int stepperDirection = 2048 * (digitalPinRead(STEP_UP) ? 1 : digitalPinRead(STEP_DOWN) ? -1 : 0);
+        //preform limit checks
+        stepperDirection = (digitalPinRead(LIMIT_MAX) ? min(stepperDirection, 0) : (digitalPinRead(LIMIT_MIN) ? max(stepperDirection,0) : stepperDirection));
+        if(stepperDirection != 0){
+            U0putchar('S');
+            U0putchar('T');
+            U0putchar('E');
+            U0putchar('P');
+            U0putchar(' ');
+            U0putchar(stepperDirection);
+            DisplayTime(now); //hehe outbound library function
+        }
+        setStepperMotor(stepperDirection);
+    }
+    if(displayTemp && abs(lastTempPrint - now.minute()) >= 1){
+        lcd.clear();
+        lastTempPrint = now.minute(); //update prev
+        temp_F = dht.readTemperature();
+        humidity = dht.readHumidity();
+        lcd.print("Temp F, Humidity"); //might be too wide
+        delayFreq(1);
+        lcd.clear();
+        lcd.print(temp_F); // write temp in F to lcd
+        lcd.print(humidity); // write humidity to lcd
+    }
+    previousState = currentState;
+    if(Water){
+        int waterLvl = adc_read(WATER_LEVEL); // calc water lvl
+        if(waterLvl <= WATER_THRESH){
+            currentState = ERROR;
+        }
+    }
+    delayFreq(1); //1 second delay.
+    }
+}
+
+void powerChange(){
+    previousState = currentState;
+    bool bPressed = digitalPinRead(B_ON_OFF); //implies you need to hold the button long enough to reach this state.
+     if(OnState && bPressed){
+        currentState = IDLE;
+        OnState = false;
+    }
+    else if(bPressed) {
+        currentState = OFF;
+        OnState = true;
+    }
+}
+
+State newMachineState(int waterLvl , float temp, State currentState){
+    State state;
+    if(temp <= TEMP_THRESH && currentState == RUNNING){
+        state = IDLE;
+    }
+    else if(temp > TEMP_THRESH && currentState == IDLE){
+        state = RUNNING;
+    }
+    else if(currentState == ERROR && digitalPinRead(B_RESET) && waterLvl > WATER_THRESH){
+        state = IDLE;
+    }
+    else{
+        state = currentState;
+    }
+    return state;
+}
+
+void setFan(int speed){
+    if(speed){
+        digitalPinWrite(FAN, true);
+    }
+    if(!speed){
+        digitalPinWrite(FAN, false);
+    }
+}
+
+void setStep(int distance){
+    stepper.step(distance);
 }
