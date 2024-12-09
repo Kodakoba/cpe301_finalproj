@@ -29,6 +29,64 @@ B - D25*/
 #define RDA 0x80
 #define TBE 0x20
 
+//the megalist of register cause YAY
+volatile unsigned char* port_a = (unsigned char*) 0x22;
+volatile unsigned char* ddr_a = (unsigned char*) 0x21;
+volatile unsigned char* pin_a = (unsigned char*) 0x20;
+volatile unsigned char* port_b = (unsigned char*) 0x25;
+volatile unsigned char* ddr_b = (unsigned char*) 0x24;
+volatile unsigned char* pin_b = (unsigned char*) 0x23;
+volatile unsigned char* port_c = (unsigned char*) 0x28;
+volatile unsigned char* ddr_c = (unsigned char*) 0x27;
+volatile unsigned char* pin_c = (unsigned char*) 0x26;
+volatile unsigned char* port_d = (unsigned char*) 0x2B;
+volatile unsigned char* ddr_d = (unsigned char*) 0x2A;
+volatile unsigned char* pin_d = (unsigned char*) 0x29;
+volatile unsigned char* port_e = (unsigned char*) 0x2E;
+volatile unsigned char* ddr_e = (unsigned char*) 0x2D;
+volatile unsigned char* pin_e = (unsigned char*) 0x2C;
+volatile unsigned char* port_f = (unsigned char*) 0x31;
+volatile unsigned char* ddr_f = (unsigned char*) 0x30;
+volatile unsigned char* pin_f = (unsigned char*) 0x2F;
+volatile unsigned char* port_g = (unsigned char*) 0x34;
+volatile unsigned char* ddr_g = (unsigned char*) 0x33;
+volatile unsigned char* pin_g = (unsigned char*) 0x32;
+volatile unsigned char* port_h = (unsigned char*) 0x102;
+volatile unsigned char* ddr_h  = (unsigned char*) 0x101;
+volatile unsigned char* pin_h  = (unsigned char*) 0x100;
+volatile unsigned char* port_j = (unsigned char*) 0x105;
+volatile unsigned char* ddr_j  = (unsigned char*) 0x104;
+volatile unsigned char* pin_j  = (unsigned char*) 0x103;
+volatile unsigned char* port_k = (unsigned char*) 0x108;
+volatile unsigned char* ddr_k  = (unsigned char*) 0x107;
+volatile unsigned char* pin_k  = (unsigned char*) 0x106;
+volatile unsigned char* port_l = (unsigned char*) 0x10B;
+volatile unsigned char* ddr_l  = (unsigned char*) 0x10A;
+volatile unsigned char* pin_l  = (unsigned char*) 0x109;
+//additional define magic
+#define WRITE_LOW_PA(pin_num)  *port_a &= ~(0x01 << pin_num);
+#define WRITE_HIGH_PA(pin_num) *port_a |= (0x01 << pin_num);
+#define WRITE_HIGH_PB(pin_num)  *port_b |= (0x01 << pin_num);
+#define WRITE_LOW_PB(pin_num)  *port_b &= ~(0x01 << pin_num);
+#define WRITE_HIGH_PC(pin_num)  *port_c |= (0x01 << pin_num);
+#define WRITE_LOW_PC(pin_num)  *port_c &= ~(0x01 << pin_num);
+#define WRITE_HIGH_PD(pin_num)  *port_d |= (0x01 << pin_num);
+#define WRITE_LOW_PD(pin_num)  *port_d &= ~(0x01 << pin_num);
+#define WRITE_HIGH_PE(pin_num)  *port_e |= (0x01 << pin_num);
+#define WRITE_LOW_PE(pin_num)  *port_e &= ~(0x01 << pin_num);
+#define WRITE_HIGH_PF(pin_num)  *port_f |= (0x01 << pin_num);
+#define WRITE_LOW_PF(pin_num)  *port_f &= ~(0x01 << pin_num);
+#define WRITE_HIGH_PG(pin_num)  *port_g |= (0x01 << pin_num);
+#define WRITE_LOW_PG(pin_num)  *port_g &= ~(0x01 << pin_num);
+#define WRITE_HIGH_PH(pin_num)  *port_h |= (0x01 << pin_num);
+#define WRITE_LOW_PH(pin_num)  *port_h &= ~(0x01 << pin_num);
+#define WRITE_HIGH_PJ(pin_num)  *port_j |= (0x01 << pin_num);
+#define WRITE_LOW_PJ(pin_num)  *port_j &= ~(0x01 << pin_num);
+#define WRITE_HIGH_PK(pin_num)  *port_k |= (0x01 << pin_num);
+#define WRITE_LOW_PK(pin_num)  *port_k &= ~(0x01 << pin_num);
+#define WRITE_HIGH_PL(pin_num)  *port_l |= (0x01 << pin_num);
+#define WRITE_LOW_PL(pin_num)  *port_l &= ~(0x01 << pin_num);
+
 volatile unsigned char *newUCSR0A = (unsigned char *)0x00C0;
 volatile unsigned char *newUCSR0B = (unsigned char *)0x00C1;
 volatile unsigned char *newUCSR0C = (unsigned char *)0x00C2;
@@ -61,15 +119,15 @@ volatile unsigned int* a_ADC_DATA = (unsigned int*) 0x78;
 #define STEPPER_P3 3 //E5
 #define STEPPER_P4 4 //G5 //who designed this
 #define DHT_PIN 5 //E3
-#define WATER_LEVEL 1
+#define WATER_LEVEL 6
 
 //boundries
 #define WATER_THRESH 320 //this is subject to change via actual measurements from the sensor.
 #define TEMP_THRESH 50 //or 10 in C mode, i didn't check the doc at this time.
 
 //setup but global
-LiquidCrystal lcd(6,7,8,9,10,11);
-DHT11 dht11(DHT_PIN);
+LiquidCrystal lcd(7,8,9,10,11,12);
+DHT11 dht(D5);
 RTC_DS1307 rtc;
 Stepper stepper(2048, STEPPER_P1, STEPPER_P2, STEPPER_P3, STEPPER_P4);
 
@@ -103,24 +161,25 @@ void setup(){
     //initialize port, ddr, pin here later on my laptop.
     //and set mode
     //*ddrc &= ~(0x01 << B_ON_OFF | 0x01 << B_RESET | ...)
-    RTC.begin();
+    pinSetup();
+    rtc.begin();
     DateTime now = DateTime(2024, 12, 12, 0, 0, 0);
-    RTC.adjust(now);
+    rtc.adjust(now);
     adc_init();
     initTimer();
-    dht.begin(); // check library for this function, its a PITA.
+    //dht.begin(); // check library for this function, its a PITA.
     lcd.begin(16, 2);
     //sheesh
     attachInterrupt(digitalPinToInterrupt(30), powerChange, RISING);
 }
 
 void loop(){
-    DateTime now = RTC.now();
+    DateTime now = rtc.now();
     if(displayTemp){
-        temp_F = dht.reatTemperature();
+        temp_F = dht.readFahrenheit();
         humidity = dht.readHumidity(); //may require casting to an integer. BOO.
     }
-    if(neoPinRead(B_ON_OFF)){
+    if(neoPinRead(7, 'C')){
         powerChange();
     }
     currentState = newMachineState(humidity,temp_F,currentState);
@@ -165,10 +224,36 @@ void loop(){
     }
     setFan(fanOn);
     //turn leds on here too using *ddrA.
+    if(ledH = 0){
+      WRITE_HIGH_PA(0);
+      WRITE_LOW_PA(1);
+      WRITE_LOW_PA(2);
+      WRITE_LOW_PA(3);
+    }
+    else if(ledH = 1){
+      WRITE_HIGH_PA(1);
+      WRITE_LOW_PA(0);
+      WRITE_LOW_PA(2);
+      WRITE_LOW_PA(3);
+    }
+    else if(ledH = 2){
+      WRITE_HIGH_PA(2);
+      WRITE_LOW_PA(1);
+      WRITE_LOW_PA(0);
+      WRITE_LOW_PA(3);
+    }
+    else if(ledH = 3){
+      WRITE_HIGH_PA(3);
+      WRITE_LOW_PA(1);
+      WRITE_LOW_PA(2);
+      WRITE_LOW_PA(0);
+    }
+
     if(stepperState){
-        int stepperDirection = 2048 * (pinRead(BUTTON_STEPPER_UP) ? 1 : pinRead(BUTTON_STEPPER_DOWN) ? -1 : 0);
+        int previous = 0;
+        int stepperDirection = 2048 * (neoPinRead(3, 'C') ? 1 : neoPinRead(2, 'C') ? -1 : 0);
         //preform a limit check
-        stepperDirection = (pinRead(B_LIM_MAX) ? min(stepperDirection, 0) : (pinRead(B_LIM_MIN) ? max(stepperDirection,0) : stepperDirection));
+        stepperDirection = (neoPinRead(5, 'C') ? min(stepperDirection, 0) : (neoPinRead(4, 'C') ? max(stepperDirection,0) : stepperDirection));
         if(stepperDirection != 0){
             U0putchar('S');
             U0putchar('T');
@@ -176,17 +261,18 @@ void loop(){
             U0putchar('P');
             U0putchar(' ');
             U0putchar(stepperDirection);
-            DisplayTime();
+            DisplayTime(now);
         }
-        setStepperMotor(stepperDirection);
+        stepper.step(stepperDirection - previous);
+        previous = stepperDirection;
     }
     if(displayTemp && abs(lastTempPrint - now.minute()) >= 1){
         lcd.clear();
         lastTempPrint = now.minute(); //update prev
-        temp_F = dht.readTemperature();
+        temp_F = dht.readFahrenheit();
         humidity = dht.readHumidity();
         lcd.print("Temp F, Humidity"); //might be too wide
-        milis(1000) //originally was gonna CALL THE TIME FUNCTION AT 1 HZ. but cmon, functional programming 
+        delayFreq(1); //originally was gonna CALL THE TIME FUNCTION AT 1 HZ. but cmon, functional programming 
         lcd.clear();
         lcd.print(temp_F); //write temp in F to lcd
         lcd.print(humidity); //write humidity to lcd
@@ -198,13 +284,13 @@ void loop(){
             currentState = ERROR;
         }
     }
-    millis(1000); //1 second delay.
+    delayFreq(1); //1 second delay.
     }
 }
 
 void powerChange(){
     previousState = currentState;
-    bool bPressed = neoPinRead(B_ON_OFF); //implies you need to hold the button long enough to reach this state.
+    bool bPressed = neoPinRead(7, 'C'); //implies you need to hold the button long enough to reach this state.
      if(OnState && bPressed){
         currentState = IDLE;
         OnState = false;
@@ -215,9 +301,43 @@ void powerChange(){
     }
 }
 
-int neoPinRead(int pin){
+int neoPinRead(int pin, char bank){
     //needs bull fallthrough statement
-    return *pinc & (0x01 << pin);
+    switch(bank){
+      case 'A':
+        return *pin_a & (0x01 << pin);
+        break;
+      case 'B':
+        return *pin_b & (0x01 << pin);
+        break;
+      case 'C':
+        return *pin_c & (0x01 << pin);
+        break;
+      case 'D':
+        return *pin_d & (0x01 << pin);
+        break;
+      case 'E':
+        return *pin_e & (0x01 << pin);
+        break;
+      case 'F':
+        return *pin_f & (0x01 << pin);
+        break;
+      case 'G':
+        return *pin_g & (0x01 << pin);
+        break;
+      case 'H':
+        return *pin_h & (0x01 << pin);
+        break;
+      case 'J':
+        return *pin_j & (0x01 << pin);
+        break;
+      case 'K':
+        return *pin_k & (0x01 << pin);
+        break;
+      case 'L':
+        return *pin_l & (0x01 << pin);
+        break;
+    }
 }
 
 State newMachineState(int waterLvl , float temp, State currentState){
@@ -228,7 +348,7 @@ State newMachineState(int waterLvl , float temp, State currentState){
     else if(temp > TEMP_THRESH && currentState == IDLE){
         state = RUNNING;
     }
-    else if(currentState == ERROR && neoPinRead(B_RESET) && waterLvl > WATER_THRESH){
+    else if(currentState == ERROR && neoPinRead(6,'C') && waterLvl > WATER_THRESH){
         state = IDLE;
     }
     else{
@@ -239,10 +359,11 @@ State newMachineState(int waterLvl , float temp, State currentState){
 
 void setFan(int speed){
     if(speed){
-        //write high
+        WRITE_HIGH_PE(0);
     }
     if(!speed){
         //do not that.
+        WRITE_LOW_PE(0);
     }
 }
 
@@ -255,6 +376,20 @@ void initTimer(){
   *newTCCR1A = 0x00;
   *newTCCR1B = 0x00;
   *newTCCR1C = 0x00;
+  *newTIFR1 = 0x01;
+}
+
+void delayFreq(double freq){
+  //1000hz = 1ms
+  double period = 1.0/double(freq);
+  double half_period = period/ 2.0f;
+  double clk_period = 1.0 / 16000000;
+  unsigned int ticks = half_period/clk_period;
+  *newTCNT1 = (unsigned int) (65536 - ticks);
+  *newTCCR1A = 0x0;
+  *newTCCR1B = 0x01; //wait?
+  while((*newTIFR1 & 0x01)==0); 
+  *newTCCR1B = 0x00;           
   *newTIFR1 = 0x01;
 }
 
@@ -369,3 +504,26 @@ void DisplayTime(DateTime now){
     U0putchar('\n');
 }
 
+
+void pinSetup(){
+    //*ddrc &= ~(0x01 << B_ON_OFF | 0x01 << B_RESET | ...)
+    //LEDs
+    *ddr_a |= 0b00001111; //cheesy >:)
+    //buttons
+    *ddr_c &= ~(0b11111100);
+    *port_c |= 0b11111100;
+    //the fan since stepper already has a routine
+    *ddr_e |= 0x01; //because 0x01 = 0b00000001
+    //DHT
+    *ddr_e &= ~(0b00001000);
+    *port_e |= 0b00001000;
+    //RTC (i2c in)
+    *ddr_d &= ~(0b00000011);
+    *port_d |= 0b00000011;
+    //water sensor
+    *ddr_h &= ~(0b00001000);
+    *port_h |= (0b00001000);
+    //should be it? lets find out :trollge: 
+
+
+}
