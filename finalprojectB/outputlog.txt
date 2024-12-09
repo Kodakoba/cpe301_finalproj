@@ -1,0 +1,178 @@
+
+FQBN: arduino:avr:mega
+Using board 'mega' from platform in folder: C:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6
+Using core 'arduino' from platform in folder: C:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6
+
+Detecting libraries used...
+C:\Users\Koda\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7/bin/avr-g++ -c -g -Os -w -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -Wno-error=narrowing -flto -w -x c++ -E -CC -mmcu=atmega2560 -DF_CPU=16000000L -DARDUINO=10607 -DARDUINO_AVR_MEGA2560 -DARDUINO_ARCH_AVR -IC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino -IC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\variants\mega C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\sketch\finalprojectB.ino.cpp -o nul
+Alternatives for EduIntro.h: [EduIntro@0.0.16]
+ResolveLibrary(EduIntro.h)
+  -> candidates: [EduIntro@0.0.16]
+C:\Users\Koda\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7/bin/avr-g++ -c -g -Os -w -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -Wno-error=narrowing -flto -w -x c++ -E -CC -mmcu=atmega2560 -DF_CPU=16000000L -DARDUINO=10607 -DARDUINO_AVR_MEGA2560 -DARDUINO_ARCH_AVR -IC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino -IC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\variants\mega -IC:\Users\Koda\Documents\Arduino\libraries\EduIntro\src C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\sketch\finalprojectB.ino.cpp -o nul
+Alternatives for Servo.h: [Servo@1.2.2]
+ResolveLibrary(Servo.h)
+  -> candidates: [Servo@1.2.2]
+C:\Users\Koda\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7/bin/avr-g++ -c -g -Os -w -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -Wno-error=narrowing -flto -w -x c++ -E -CC -mmcu=atmega2560 -DF_CPU=16000000L -DARDUINO=10607 -DARDUINO_AVR_MEGA2560 -DARDUINO_ARCH_AVR -IC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino -IC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\variants\mega -IC:\Users\Koda\Documents\Arduino\libraries\EduIntro\src -IC:\Users\Koda\AppData\Local\Arduino15\libraries\Servo\src C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\sketch\finalprojectB.ino.cpp -o nul
+Alternatives for LiquidCrystal.h: [LiquidCrystal@1.0.7]
+ResolveLibrary(LiquidCrystal.h)
+  -> candidates: [LiquidCrystal@1.0.7]
+C:\Users\Koda\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7/bin/avr-g++ -c -g -Os -w -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -Wno-error=narrowing -flto -w -x c++ -E -CC -mmcu=atmega2560 -DF_CPU=16000000L -DARDUINO=10607 -DARDUINO_AVR_MEGA2560 -DARDUINO_ARCH_AVR -IC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino -IC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\variants\mega -IC:\Users\Koda\Documents\Arduino\libraries\EduIntro\src -IC:\Users\Koda\AppData\Local\Arduino15\libraries\Servo\src -IC:\Users\Koda\AppData\Local\Arduino15\libraries\LiquidCrystal\src C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\sketch\finalprojectB.ino.cpp -o nul
+Alternatives for Stepper.h: [Stepper@1.1.3]
+ResolveLibrary(Stepper.h)
+  -> candidates: [Stepper@1.1.3]
+C:\Users\Koda\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7/bin/avr-g++ -c -g -Os -w -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -Wno-error=narrowing -flto -w -x c++ -E -CC -mmcu=atmega2560 -DF_CPU=16000000L -DARDUINO=10607 -DARDUINO_AVR_MEGA2560 -DARDUINO_ARCH_AVR -IC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino -IC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\variants\mega -IC:\Users\Koda\Documents\Arduino\libraries\EduIntro\src -IC:\Users\Koda\AppData\Local\Arduino15\libraries\Servo\src -IC:\Users\Koda\AppData\Local\Arduino15\libraries\LiquidCrystal\src -IC:\Users\Koda\AppData\Local\Arduino15\libraries\Stepper\src C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\sketch\finalprojectB.ino.cpp -o nul
+Alternatives for RTClib.h: [RTClib@2.1.4]
+ResolveLibrary(RTClib.h)
+  -> candidates: [RTClib@2.1.4]
+C:\Users\Koda\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7/bin/avr-g++ -c -g -Os -w -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -Wno-error=narrowing -flto -w -x c++ -E -CC -mmcu=atmega2560 -DF_CPU=16000000L -DARDUINO=10607 -DARDUINO_AVR_MEGA2560 -DARDUINO_ARCH_AVR -IC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino -IC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\variants\mega -IC:\Users\Koda\Documents\Arduino\libraries\EduIntro\src -IC:\Users\Koda\AppData\Local\Arduino15\libraries\Servo\src -IC:\Users\Koda\AppData\Local\Arduino15\libraries\LiquidCrystal\src -IC:\Users\Koda\AppData\Local\Arduino15\libraries\Stepper\src -IC:\Users\Koda\Documents\Arduino\libraries\RTClib\src C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\sketch\finalprojectB.ino.cpp -o nul
+Alternatives for Adafruit_I2CDevice.h: [Adafruit BusIO@1.16.2]
+ResolveLibrary(Adafruit_I2CDevice.h)
+  -> candidates: [Adafruit BusIO@1.16.2]
+C:\Users\Koda\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7/bin/avr-g++ -c -g -Os -w -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -Wno-error=narrowing -flto -w -x c++ -E -CC -mmcu=atmega2560 -DF_CPU=16000000L -DARDUINO=10607 -DARDUINO_AVR_MEGA2560 -DARDUINO_ARCH_AVR -IC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino -IC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\variants\mega -IC:\Users\Koda\Documents\Arduino\libraries\EduIntro\src -IC:\Users\Koda\AppData\Local\Arduino15\libraries\Servo\src -IC:\Users\Koda\AppData\Local\Arduino15\libraries\LiquidCrystal\src -IC:\Users\Koda\AppData\Local\Arduino15\libraries\Stepper\src -IC:\Users\Koda\Documents\Arduino\libraries\RTClib\src -IC:\Users\Koda\Documents\Arduino\libraries\Adafruit_BusIO C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\sketch\finalprojectB.ino.cpp -o nul
+Alternatives for Wire.h: [Wire@1.0]
+ResolveLibrary(Wire.h)
+  -> candidates: [Wire@1.0]
+C:\Users\Koda\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7/bin/avr-g++ -c -g -Os -w -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -Wno-error=narrowing -flto -w -x c++ -E -CC -mmcu=atmega2560 -DF_CPU=16000000L -DARDUINO=10607 -DARDUINO_AVR_MEGA2560 -DARDUINO_ARCH_AVR -IC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino -IC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\variants\mega -IC:\Users\Koda\Documents\Arduino\libraries\EduIntro\src -IC:\Users\Koda\AppData\Local\Arduino15\libraries\Servo\src -IC:\Users\Koda\AppData\Local\Arduino15\libraries\LiquidCrystal\src -IC:\Users\Koda\AppData\Local\Arduino15\libraries\Stepper\src -IC:\Users\Koda\Documents\Arduino\libraries\RTClib\src -IC:\Users\Koda\Documents\Arduino\libraries\Adafruit_BusIO -IC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\Wire\src C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\sketch\finalprojectB.ino.cpp -o nul
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\EduIntro\src\Button\Button.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\EduIntro\src\DHT11\DHT11.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\EduIntro\src\EduIntro.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\EduIntro\src\Generic\AnalogInput2.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\EduIntro\src\Generic\Analoginput.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\EduIntro\src\Generic\DigitalInput.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\EduIntro\src\Generic\Output.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\EduIntro\src\IMU\Motion.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\EduIntro\src\LED\LED.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\EduIntro\src\LM35\LM35.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\EduIntro\src\LightSensor\LightSensor.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\EduIntro\src\MosFet\MosFet.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\EduIntro\src\PIR\PIR.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\EduIntro\src\Piezo\Piezo.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\EduIntro\src\Potentiometer\Potentiometer.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\EduIntro\src\Relay\Relay.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\EduIntro\src\ServoMotor\ServoMotor.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\EduIntro\src\Thermistor\Thermistor.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\EduIntro\src\WiFiComm\WiFiComm.cpp
+Using cached library dependencies for file: C:\Users\Koda\AppData\Local\Arduino15\libraries\Servo\src\avr\Servo.cpp
+Using cached library dependencies for file: C:\Users\Koda\AppData\Local\Arduino15\libraries\Servo\src\mbed\Servo.cpp
+Using cached library dependencies for file: C:\Users\Koda\AppData\Local\Arduino15\libraries\Servo\src\megaavr\Servo.cpp
+Using cached library dependencies for file: C:\Users\Koda\AppData\Local\Arduino15\libraries\Servo\src\nrf52\Servo.cpp
+Using cached library dependencies for file: C:\Users\Koda\AppData\Local\Arduino15\libraries\Servo\src\renesas\Servo.cpp
+Using cached library dependencies for file: C:\Users\Koda\AppData\Local\Arduino15\libraries\Servo\src\sam\Servo.cpp
+Using cached library dependencies for file: C:\Users\Koda\AppData\Local\Arduino15\libraries\Servo\src\samd\Servo.cpp
+Using cached library dependencies for file: C:\Users\Koda\AppData\Local\Arduino15\libraries\Servo\src\stm32f4\Servo.cpp
+Using cached library dependencies for file: C:\Users\Koda\AppData\Local\Arduino15\libraries\Servo\src\xmc\Servo.cpp
+Using cached library dependencies for file: C:\Users\Koda\AppData\Local\Arduino15\libraries\LiquidCrystal\src\LiquidCrystal.cpp
+Using cached library dependencies for file: C:\Users\Koda\AppData\Local\Arduino15\libraries\Stepper\src\Stepper.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\RTClib\src\RTC_DS1307.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\RTClib\src\RTC_DS3231.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\RTClib\src\RTC_Micros.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\RTClib\src\RTC_Millis.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\RTClib\src\RTC_PCF8523.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\RTClib\src\RTC_PCF8563.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\RTClib\src\RTClib.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\Adafruit_BusIO\Adafruit_BusIO_Register.cpp
+Alternatives for SPI.h: [SPI@1.0]
+ResolveLibrary(SPI.h)
+  -> candidates: [SPI@1.0]
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\Adafruit_BusIO\Adafruit_I2CDevice.cpp
+Using cached library dependencies for file: C:\Users\Koda\Documents\Arduino\libraries\Adafruit_BusIO\Adafruit_SPIDevice.cpp
+Using cached library dependencies for file: C:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\Wire\src\Wire.cpp
+Using cached library dependencies for file: C:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\Wire\src\utility\twi.c
+Using cached library dependencies for file: C:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\SPI\src\SPI.cpp
+Generating function prototypes...
+C:\Users\Koda\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7/bin/avr-g++ -c -g -Os -w -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -Wno-error=narrowing -flto -w -x c++ -E -CC -mmcu=atmega2560 -DF_CPU=16000000L -DARDUINO=10607 -DARDUINO_AVR_MEGA2560 -DARDUINO_ARCH_AVR -IC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino -IC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\variants\mega -IC:\Users\Koda\Documents\Arduino\libraries\EduIntro\src -IC:\Users\Koda\AppData\Local\Arduino15\libraries\Servo\src -IC:\Users\Koda\AppData\Local\Arduino15\libraries\LiquidCrystal\src -IC:\Users\Koda\AppData\Local\Arduino15\libraries\Stepper\src -IC:\Users\Koda\Documents\Arduino\libraries\RTClib\src -IC:\Users\Koda\Documents\Arduino\libraries\Adafruit_BusIO -IC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\Wire\src -IC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\SPI\src C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\sketch\finalprojectB.ino.cpp -o C:\Users\Koda\AppData\Local\Temp\1838034437\sketch_merged.cpp
+C:\Users\Koda\AppData\Local\Arduino15\packages\builtin\tools\ctags\5.8-arduino11/ctags -u --language-force=c++ -f - --c++-kinds=svpf --fields=KSTtzns --line-directives C:\Users\Koda\AppData\Local\Temp\1838034437\sketch_merged.cpp
+Compiling sketch...
+"C:\\Users\\Koda\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-g++" -c -g -Os -w -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -Wno-error=narrowing -MMD -flto -mmcu=atmega2560 -DF_CPU=16000000L -DARDUINO=10607 -DARDUINO_AVR_MEGA2560 -DARDUINO_ARCH_AVR "-IC:\\Users\\Koda\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino" "-IC:\\Users\\Koda\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\mega" "-IC:\\Users\\Koda\\Documents\\Arduino\\libraries\\EduIntro\\src" "-IC:\\Users\\Koda\\AppData\\Local\\Arduino15\\libraries\\Servo\\src" "-IC:\\Users\\Koda\\AppData\\Local\\Arduino15\\libraries\\LiquidCrystal\\src" "-IC:\\Users\\Koda\\AppData\\Local\\Arduino15\\libraries\\Stepper\\src" "-IC:\\Users\\Koda\\Documents\\Arduino\\libraries\\RTClib\\src" "-IC:\\Users\\Koda\\Documents\\Arduino\\libraries\\Adafruit_BusIO" "-IC:\\Users\\Koda\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\libraries\\Wire\\src" "-IC:\\Users\\Koda\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\libraries\\SPI\\src" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\sketch\\finalprojectB.ino.cpp" -o "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\sketch\\finalprojectB.ino.cpp.o"
+Compiling libraries...
+Compiling library "EduIntro"
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\EduIntro\IMU\Motion.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\EduIntro\Button\Button.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\EduIntro\Generic\Output.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\EduIntro\Generic\Analoginput.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\EduIntro\Generic\DigitalInput.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\EduIntro\EduIntro.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\EduIntro\DHT11\DHT11.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\EduIntro\Generic\AnalogInput2.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\EduIntro\LM35\LM35.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\EduIntro\LED\LED.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\EduIntro\LightSensor\LightSensor.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\EduIntro\PIR\PIR.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\EduIntro\Piezo\Piezo.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\EduIntro\WiFiComm\WiFiComm.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\EduIntro\Potentiometer\Potentiometer.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\EduIntro\MosFet\MosFet.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\EduIntro\Relay\Relay.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\EduIntro\ServoMotor\ServoMotor.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\EduIntro\Thermistor\Thermistor.cpp.o
+Compiling library "Servo"
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\Servo\renesas\Servo.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\Servo\mbed\Servo.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\Servo\avr\Servo.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\Servo\samd\Servo.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\Servo\xmc\Servo.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\Servo\megaavr\Servo.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\Servo\nrf52\Servo.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\Servo\stm32f4\Servo.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\Servo\sam\Servo.cpp.o
+Compiling library "LiquidCrystal"
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\LiquidCrystal\LiquidCrystal.cpp.o
+Compiling library "Stepper"
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\Stepper\Stepper.cpp.o
+Compiling library "RTClib"
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\RTClib\RTC_DS1307.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\RTClib\RTC_Millis.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\RTClib\RTC_DS3231.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\RTClib\RTC_PCF8563.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\RTClib\RTC_PCF8523.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\RTClib\RTClib.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\RTClib\RTC_Micros.cpp.o
+Compiling library "Adafruit BusIO"
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\Adafruit_BusIO\Adafruit_I2CDevice.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\Adafruit_BusIO\Adafruit_SPIDevice.cpp.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\Adafruit_BusIO\Adafruit_BusIO_Register.cpp.o
+Compiling library "Wire"
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\Wire\utility\twi.c.o
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\Wire\Wire.cpp.o
+Compiling library "SPI"
+Using previously compiled file: C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B\libraries\SPI\SPI.cpp.o
+Compiling core...
+Using precompiled core: C:\Users\Koda\AppData\Local\arduino\cores\arduino_avr_mega_cpu_atmega2560_30cefb4ff4305ba6c4bf1d12e06dc7f6\core.a
+Linking everything together...
+"C:\\Users\\Koda\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-gcc" -w -Os -g -flto -fuse-linker-plugin -Wl,--gc-sections -mmcu=atmega2560 -o "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B/finalprojectB.ino.elf" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\sketch\\finalprojectB.ino.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\EduIntro\\Button\\Button.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\EduIntro\\DHT11\\DHT11.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\EduIntro\\EduIntro.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\EduIntro\\Generic\\AnalogInput2.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\EduIntro\\Generic\\Analoginput.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\EduIntro\\Generic\\DigitalInput.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\EduIntro\\Generic\\Output.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\EduIntro\\IMU\\Motion.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\EduIntro\\LED\\LED.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\EduIntro\\LM35\\LM35.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\EduIntro\\LightSensor\\LightSensor.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\EduIntro\\MosFet\\MosFet.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\EduIntro\\PIR\\PIR.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\EduIntro\\Piezo\\Piezo.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\EduIntro\\Potentiometer\\Potentiometer.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\EduIntro\\Relay\\Relay.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\EduIntro\\ServoMotor\\ServoMotor.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\EduIntro\\Thermistor\\Thermistor.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\EduIntro\\WiFiComm\\WiFiComm.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\Servo\\avr\\Servo.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\Servo\\mbed\\Servo.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\Servo\\megaavr\\Servo.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\Servo\\nrf52\\Servo.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\Servo\\renesas\\Servo.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\Servo\\sam\\Servo.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\Servo\\samd\\Servo.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\Servo\\stm32f4\\Servo.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\Servo\\xmc\\Servo.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\LiquidCrystal\\LiquidCrystal.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\Stepper\\Stepper.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\RTClib\\RTC_DS1307.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\RTClib\\RTC_DS3231.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\RTClib\\RTC_Micros.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\RTClib\\RTC_Millis.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\RTClib\\RTC_PCF8523.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\RTClib\\RTC_PCF8563.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\RTClib\\RTClib.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\Adafruit_BusIO\\Adafruit_BusIO_Register.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\Adafruit_BusIO\\Adafruit_I2CDevice.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\Adafruit_BusIO\\Adafruit_SPIDevice.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\Wire\\Wire.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\Wire\\utility\\twi.c.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B\\libraries\\SPI\\SPI.cpp.o" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B/..\\..\\cores\\arduino_avr_mega_cpu_atmega2560_30cefb4ff4305ba6c4bf1d12e06dc7f6\\core.a" "-LC:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B" -lm
+"C:\\Users\\Koda\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-objcopy" -O ihex -j .eeprom --set-section-flags=.eeprom=alloc,load --no-change-warnings --change-section-lma .eeprom=0 "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B/finalprojectB.ino.elf" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B/finalprojectB.ino.eep"
+"C:\\Users\\Koda\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-objcopy" -O ihex -R .eeprom "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B/finalprojectB.ino.elf" "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B/finalprojectB.ino.hex"
+
+Using library EduIntro at version 0.0.16 in folder: C:\Users\Koda\Documents\Arduino\libraries\EduIntro 
+Using library Servo at version 1.2.2 in folder: C:\Users\Koda\AppData\Local\Arduino15\libraries\Servo 
+Using library LiquidCrystal at version 1.0.7 in folder: C:\Users\Koda\AppData\Local\Arduino15\libraries\LiquidCrystal 
+Using library Stepper at version 1.1.3 in folder: C:\Users\Koda\AppData\Local\Arduino15\libraries\Stepper 
+Using library RTClib at version 2.1.4 in folder: C:\Users\Koda\Documents\Arduino\libraries\RTClib 
+Using library Adafruit BusIO at version 1.16.2 in folder: C:\Users\Koda\Documents\Arduino\libraries\Adafruit_BusIO 
+Using library Wire at version 1.0 in folder: C:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\Wire 
+Using library SPI at version 1.0 in folder: C:\Users\Koda\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\libraries\SPI 
+"C:\\Users\\Koda\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7/bin/avr-size" -A "C:\\Users\\Koda\\AppData\\Local\\arduino\\sketches\\5CDB2C4C36C34D924938CE7A204CB97B/finalprojectB.ino.elf"
+Sketch uses 11518 bytes (4%) of program storage space. Maximum is 253952 bytes.
+Global variables use 578 bytes (7%) of dynamic memory, leaving 7614 bytes for local variables. Maximum is 8192 bytes.
+"C:\Users\Koda\AppData\Local\Arduino15\packages\arduino\tools\avrdude\6.3.0-arduino17/bin/avrdude" "-CC:\Users\Koda\AppData\Local\Arduino15\packages\arduino\tools\avrdude\6.3.0-arduino17/etc/avrdude.conf" -v  -patmega2560 -cwiring "-PCOM4" -b115200 -D "-Uflash:w:C:\Users\Koda\AppData\Local\arduino\sketches\5CDB2C4C36C34D924938CE7A204CB97B/finalprojectB.ino.hex:i"
+
+avrdude: Version 6.3-20190619
+         Copyright (c) 2000-2005 Brian Dean, http://www.bdmicro.com/
+         Copyright (c) 2007-2014 Joerg Wunsch
+
+         System wide configuration file is "C:\Users\Koda\AppData\Local\Arduino15\packages\arduino\tools\avrdude\6.3.0-arduino17/etc/avrdude.conf"
+
+         Using Port                    : COM4
+         Using Programmer              : wiring
+         Overriding Baud Rate          : 115200
+avrdude: stk500v2_ReceiveMessage(): timeout
+avrdude: stk500v2_ReceiveMessage(): timeout
+avrdude: stk500v2_ReceiveMessage(): timeout
+avrdude: stk500v2_ReceiveMessage(): timeout
+avrdude: stk500v2_ReceiveMessage(): timeout
+avrdude: stk500v2_ReceiveMessage(): timeout
+avrdude: stk500v2_getsync(): timeout communicating with programmer
+
+avrdude done.  Thank you.
+
+Failed uploading: uploading error: exit status 1

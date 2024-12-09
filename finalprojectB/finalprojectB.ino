@@ -17,7 +17,7 @@ STEPPER - D1-4
 
 sensors/other dout:
 DHT - D5
-LCD - D6-11
+LCD - D7-12
 RTC - D20/21 (i2c)
 
 leds:
