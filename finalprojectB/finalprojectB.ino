@@ -6,7 +6,7 @@
 #include <RTClib.h>
 
 /*buttons:
-ON_OFF - D30
+ON_OFF - D19 // THIS HAS CHANGED
 RESET - D31
 LIMITERS - D32/33
 STEPPER U/D - D34/35
@@ -151,7 +151,7 @@ enum State {
 };
 //other state machine sh!t
 State currentState = OFF;
-State previousState = START;
+State previousState = IDLE;
 bool OnState = true;
 
 //did i mention i spent my whole weekend doing this and im becoming derranged
@@ -169,8 +169,9 @@ void setup(){
     initTimer();
     //dht.begin(); // check library for this function, its a PITA.
     lcd.begin(16, 2);
+    lcd.write("Starting...");
     //sheesh
-    attachInterrupt(digitalPinToInterrupt(30), powerChange, RISING);
+    attachInterrupt(digitalPinToInterrupt(19), powerChange, RISING);
 }
 
 void loop(){
@@ -219,6 +220,8 @@ void loop(){
             break;
         case START: 
             //should do start things.
+            previousState = currentState;
+            currentState = RUNNING;
         default: //needed or else it breaks and im gonna break a computer.
             break;
     }
@@ -284,13 +287,13 @@ void loop(){
             currentState = ERROR;
         }
     }
-    delayFreq(1); //1 second delay.
+    delayFreq(0.1); //1 second delay.
     }
 }
 
 void powerChange(){
     previousState = currentState;
-    bool bPressed = neoPinRead(7, 'C'); //implies you need to hold the button long enough to reach this state.
+    bool bPressed = neoPinRead(2, 'D'); //implies you need to hold the button long enough to reach this state.
      if(OnState && bPressed){
         currentState = IDLE;
         OnState = false;
@@ -340,19 +343,19 @@ int neoPinRead(int pin, char bank){
     }
 }
 
-State newMachineState(int waterLvl , float temp, State currentState){
+State newMachineState(int waterLvl , float temp, State neoCurrentState){
     State state;
-    if(temp <= TEMP_THRESH && currentState == RUNNING){
+    if(temp <= TEMP_THRESH && neoCurrentState == RUNNING){
         state = IDLE;
     }
-    else if(temp > TEMP_THRESH && currentState == IDLE){
+    else if(temp > TEMP_THRESH && neoCurrentState == IDLE){
         state = RUNNING;
     }
-    else if(currentState == ERROR && neoPinRead(6,'C') && waterLvl > WATER_THRESH){
+    else if(neoCurrentState == ERROR && neoPinRead(6,'C') && waterLvl > WATER_THRESH){
         state = IDLE;
     }
     else{
-        state = currentState;
+        state = neoCurrentState;
     }
     return state;
 }
@@ -512,6 +515,9 @@ void pinSetup(){
     //buttons
     *ddr_c &= ~(0b11111100);
     *port_c |= 0b11111100;
+    //for on/off button
+    *ddr_d &= ~(0b00000100);
+    *port_d |= (0b00000100);
     //the fan since stepper already has a routine
     *ddr_e |= 0x01; //because 0x01 = 0b00000001
     //DHT
@@ -524,6 +530,4 @@ void pinSetup(){
     *ddr_h &= ~(0b00001000);
     *port_h |= (0b00001000);
     //should be it? lets find out :trollge: 
-
-
 }
