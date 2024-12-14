@@ -112,28 +112,28 @@ volatile unsigned int* a_ADC_DATA = (unsigned int*) 0x78;
 #define B_STEP_U 3 //C3
 #define B_STEP_D 2 //C2
 
-#define FAN_P 0 //E0
+#define FAN_P 3 //H3, D6
 
-#define STEPPER_P1 1 //E1
-#define STEPPER_P2 2//E4
-#define STEPPER_P3 3 //E5
-#define STEPPER_P4 4 //G5 //who designed this
+#define STEPPER_P1 47 //E1
+#define STEPPER_P2 46//E4
+#define STEPPER_P3 49 //E5
+#define STEPPER_P4 48 //G5 //who designed this
 #define DHT_PIN 5 //E3
-#define WATER_LEVEL 6
+#define WATER_LEVEL 0 //A0
 
 //boundries
-#define WATER_THRESH 320 //this is subject to change via actual measurements from the sensor.
-#define TEMP_THRESH 50 //or 10 in C mode, i didn't check the doc at this time.
+#define WATER_THRESH 15 //this is subject to change via actual measurements from the sensor.
+#define TEMP_THRESH 72 //or 10 in C mode, i didn't check the doc at this time.
 
 //setup but global
 LiquidCrystal lcd(7,8,9,10,11,12);
 DHT11 dht(D5);
 RTC_DS1307 rtc;
-Stepper stepper(2048, STEPPER_P1, STEPPER_P2, STEPPER_P3, STEPPER_P4);
+Stepper stepper(200, STEPPER_P1, STEPPER_P2, STEPPER_P3, STEPPER_P4);
 
-float temp_F;
-int humidity; //don't know if i actually need this bjorgen
-int lastTempPrint = 0;
+volatile float temp_F = 0;
+volatile int humidity = 0; //don't know if i actually need this bjorgen
+volatile int lastTempPrint = 0;
 
 // state machine flags 
 bool fanOn = false;
@@ -151,7 +151,7 @@ enum State {
 };
 //other state machine sh!t
 State currentState = OFF;
-State previousState = IDLE;
+State previousState = ERROR;
 bool OnState = true;
 
 //did i mention i spent my whole weekend doing this and im becoming derranged
@@ -163,34 +163,50 @@ void setup(){
     //*ddrc &= ~(0x01 << B_ON_OFF | 0x01 << B_RESET | ...)
     pinSetup();
     rtc.begin();
-    DateTime now = DateTime(2024, 12, 12, 0, 0, 0);
+    DateTime now = DateTime(2024, 12, 13, 0, 0, 0);
     rtc.adjust(now);
     adc_init();
     initTimer();
     //dht.begin(); // check library for this function, its a PITA.
     lcd.begin(16, 2);
     lcd.write("Starting...");
+    dht.update();
+    temp_F = dht.readFahrenheit();
+    humidity = dht.readHumidity();
+    stepper.setSpeed(60);
     //sheesh
     attachInterrupt(digitalPinToInterrupt(19), powerChange, RISING);
+    U0putchar('\n');
+  U0putchar('H');
+  U0putchar('i');
+  U0putchar(' ');
+  U0putchar('C');
+  U0putchar('O');
+  U0putchar('M');
+  U0putchar('4');
+  U0putchar('!');
 }
 
 void loop(){
+    ledH = -1;
     DateTime now = rtc.now();
-    if(displayTemp){
+    dht.update();
+    //if(displayTemp){
         temp_F = dht.readFahrenheit();
         humidity = dht.readHumidity(); //may require casting to an integer. BOO.
-    }
+    //}
     if(neoPinRead(7, 'C')){
         powerChange();
     }
     currentState = newMachineState(humidity,temp_F,currentState);
-    if(currentState != previousState){
+    //Serial.println(currentState);
+    //if(currentState != previousState){
         //print the time
         //then do state matic stuff.
         switch (currentState) {
         case OFF:
             fanOn = false;
-            ledH = 3;
+            ledH = 1;
             displayTemp = false;
             stepperState = true;
             Water = false;
@@ -204,7 +220,7 @@ void loop(){
             break;
         case RUNNING:
             fanOn = true;
-            ledH = 1;
+            ledH = 3;
             displayTemp = true;
             stepperState = true;
             Water = true;
@@ -220,41 +236,56 @@ void loop(){
             break;
         case START: 
             //should do start things.
-            previousState = currentState;
-            currentState = RUNNING;
+            //previousState = currentState;
+            //currentState = RUNNING;
+            break;
         default: //needed or else it breaks and im gonna break a computer.
             break;
     }
+
     setFan(fanOn);
     //turn leds on here too using *ddrA.
-    if(ledH = 0){
+    switch (ledH){
+    case 0:
       WRITE_HIGH_PA(0);
       WRITE_LOW_PA(1);
       WRITE_LOW_PA(2);
       WRITE_LOW_PA(3);
-    }
-    else if(ledH = 1){
+      //*port_a &= 0b11111110;
+      //*port_a |= 0b00000001;
+      break;
+    
+    case 1:
       WRITE_HIGH_PA(1);
       WRITE_LOW_PA(0);
       WRITE_LOW_PA(2);
       WRITE_LOW_PA(3);
-    }
-    else if(ledH = 2){
+      break;
+    
+    case 2:
       WRITE_HIGH_PA(2);
       WRITE_LOW_PA(1);
       WRITE_LOW_PA(0);
       WRITE_LOW_PA(3);
-    }
-    else if(ledH = 3){
+      break;
+    
+    case 3:
       WRITE_HIGH_PA(3);
       WRITE_LOW_PA(1);
       WRITE_LOW_PA(2);
       WRITE_LOW_PA(0);
+      break;
+    
+    case -1:
+      WRITE_LOW_PA(1);
+      WRITE_LOW_PA(2);
+      WRITE_LOW_PA(0);
+      WRITE_LOW_PA(3);
+      break;
     }
-
     if(stepperState){
         int previous = 0;
-        int stepperDirection = 2048 * (neoPinRead(3, 'C') ? 1 : neoPinRead(2, 'C') ? -1 : 0);
+        int stepperDirection = 200 * (neoPinRead(3, 'C') ? 1 : neoPinRead(2, 'C') ? -1 : 0);
         //preform a limit check
         stepperDirection = (neoPinRead(5, 'C') ? min(stepperDirection, 0) : (neoPinRead(4, 'C') ? max(stepperDirection,0) : stepperDirection));
         if(stepperDirection != 0){
@@ -266,7 +297,7 @@ void loop(){
             U0putchar(stepperDirection);
             DisplayTime(now);
         }
-        stepper.step(stepperDirection - previous);
+        stepper.step(stepperDirection);
         previous = stepperDirection;
     }
     if(displayTemp && abs(lastTempPrint - now.minute()) >= 1){
@@ -275,20 +306,28 @@ void loop(){
         temp_F = dht.readFahrenheit();
         humidity = dht.readHumidity();
         lcd.print("Temp F, Humidity"); //might be too wide
-        delayFreq(1); //originally was gonna CALL THE TIME FUNCTION AT 1 HZ. but cmon, functional programming 
-        lcd.clear();
+        //delayFreq(1); //originally was gonna CALL THE TIME FUNCTION AT 1 HZ. but cmon, functional programming 
+        //lcd.clear();
+        lcd.setCursor(0,1);
         lcd.print(temp_F); //write temp in F to lcd
+        lcd.print(" ");
+        lcd.setCursor(5,1);
         lcd.print(humidity); //write humidity to lcd
+        lcd.print("%");
     }
     previousState = currentState;
     if(Water){
-        int waterLvl = adc_read(WATER_LEVEL); //calc water lvl
+        unsigned int waterLvl = adc_read(WATER_LEVEL); //calc water lvl
         if(waterLvl <= WATER_THRESH){
             currentState = ERROR;
         }
+        else{
+          currentState = newMachineState(humidity,temp_F,currentState);
+          Water = false;
+        }
     }
-    delayFreq(0.1); //1 second delay.
-    }
+    delayFreq(1); //1 second delay.
+    //}
 }
 
 void powerChange(){
@@ -362,11 +401,11 @@ State newMachineState(int waterLvl , float temp, State neoCurrentState){
 
 void setFan(int speed){
     if(speed){
-        WRITE_HIGH_PE(0);
+        WRITE_HIGH_PH(3);
     }
     if(!speed){
         //do not that.
-        WRITE_LOW_PE(0);
+        WRITE_LOW_PH(3);
     }
 }
 
@@ -527,7 +566,6 @@ void pinSetup(){
     *ddr_d &= ~(0b00000011);
     *port_d |= 0b00000011;
     //water sensor
-    *ddr_h &= ~(0b00001000);
-    *port_h |= (0b00001000);
+    *ddr_h |= (0b00001000);
     //should be it? lets find out :trollge: 
 }
